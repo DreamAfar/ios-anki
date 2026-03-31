@@ -172,9 +172,11 @@ extension AnkiBackend {
         public static let cards: UInt32 = 5
         public static let decks: UInt32 = 7
         public static let scheduler: UInt32 = 13
+        public static let notetypes: UInt32 = 23
         public static let notes: UInt32 = 25
         public static let cardRendering: UInt32 = 27
         public static let search: UInt32 = 29
+        public static let importExport: UInt32 = 37
         public static let stats: UInt32 = 41
         public static let tags: UInt32 = 43
     }
@@ -228,6 +230,17 @@ extension AnkiBackend {
     // BackendCardRenderingService (27) has 6 extra methods before renderExistingCard
     public enum CardRenderingMethod {
         public static let renderExistingCard: UInt32 = 6
+    }
+
+    public enum NotetypesMethod {
+        public static let getNotetype: UInt32 = 6
+        public static let getNotetypeNames: UInt32 = 8
+    }
+
+    public enum ImportExportMethod {
+        public static let importCollectionPackage: UInt32 = 0
+        public static let exportCollectionPackage: UInt32 = 1
+        public static let importAnkiPackage: UInt32 = 2
     }
 
     public enum StatsMethod {

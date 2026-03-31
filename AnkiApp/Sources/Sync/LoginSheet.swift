@@ -15,7 +15,7 @@ struct LoginSheet: View {
         NavigationStack {
             Form {
                 Section {
-                    TextField("AnkiWeb Username", text: $username)
+                    TextField("Username", text: $username)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
                     SecureField("Password", text: $password)
@@ -40,7 +40,7 @@ struct LoginSheet: View {
                     .disabled(username.isEmpty || password.isEmpty || isLoading)
                 }
             }
-            .navigationTitle("AnkiWeb Login")
+            .navigationTitle("Login")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

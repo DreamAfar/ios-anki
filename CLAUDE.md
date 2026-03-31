@@ -1,8 +1,8 @@
-# iOS Anki Client — Project Instructions
+# Amgi — Project Instructions — Project Instructions
 
 ## Project Overview
 
-An offline-first iOS Anki flashcard client that syncs with AnkiWeb. Uses the official Anki Rust backend (AGPL-3.0) bridged to Swift via C FFI + protobuf serialization.
+An offline-first Anki-compatible iOS flashcard client with sync server support. Uses the official Anki Rust backend (AGPL-3.0) bridged to Swift via C FFI + protobuf serialization.
 
 ## Architecture
 
@@ -18,7 +18,7 @@ Rust static library (anki-bridge-rs/ → XCFramework)
 ankitects/anki rslib (anki-upstream/)
 ```
 
-**Rust owns**: SQLite database, AnkiWeb sync, FSRS scheduling, card template rendering
+**Rust owns**: SQLite database, sync protocol, FSRS scheduling, card template rendering
 **Swift owns**: SwiftUI views, @DependencyClient wiring, navigation, charts
 
 ## Module Map

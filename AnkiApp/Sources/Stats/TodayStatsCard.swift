@@ -1,33 +1,41 @@
 import SwiftUI
-import AnkiKit
+import AnkiProto
 
 struct TodayStatsCard: View {
-    let stats: TodayStats
+    let today: Anki_Stats_GraphsResponse.Today
+
+    private var accuracy: String {
+        guard today.answerCount > 0 else { return "---" }
+        let pct = Int(Double(today.correctCount) / Double(today.answerCount) * 100)
+        return "\(pct)%"
+    }
+
+    private var matureAccuracy: String {
+        guard today.matureCount > 0 else { return "---" }
+        let pct = Int(Double(today.matureCorrect) / Double(today.matureCount) * 100)
+        return "\(pct)%"
+    }
 
     var body: some View {
         VStack(spacing: 12) {
             HStack {
-                statItem(title: "Reviewed", value: "\(stats.reviewed)", color: .primary)
+                statItem(title: "Reviewed", value: "\(today.answerCount)", color: .primary)
                 Spacer()
-                statItem(title: "Time", value: formatTime(stats.timeSpentMs), color: .primary)
+                statItem(title: "Time", value: formatTime(today.answerMillis), color: .primary)
                 Spacer()
-                statItem(
-                    title: "Accuracy",
-                    value: stats.reviewed > 0
-                        ? "\(Int(Double(stats.reviewed - stats.againCount) / Double(stats.reviewed) * 100))%"
-                        : "---",
-                    color: .green
-                )
+                statItem(title: "Correct", value: accuracy, color: .green)
+                Spacer()
+                statItem(title: "Mature", value: matureAccuracy, color: .purple)
             }
             Divider()
             HStack {
-                statBadge("New", count: stats.newCards, color: .blue)
+                statBadge("New", count: today.learnCount, color: .cyan)
                 Spacer()
-                statBadge("Learning", count: stats.learnCards, color: .orange)
+                statBadge("Learn", count: today.relearnCount, color: .orange)
                 Spacer()
-                statBadge("Review", count: stats.reviewCards, color: .green)
+                statBadge("Review", count: today.reviewCount, color: .green)
                 Spacer()
-                statBadge("Again", count: stats.againCount, color: .red)
+                statBadge("Again", count: today.answerCount - today.correctCount, color: .red)
             }
         }
         .padding()
@@ -41,14 +49,14 @@ struct TodayStatsCard: View {
         }
     }
 
-    private func statBadge(_ title: String, count: Int, color: Color) -> some View {
+    private func statBadge(_ title: String, count: UInt32, color: Color) -> some View {
         VStack(spacing: 2) {
             Text("\(count)").font(.subheadline.weight(.medium)).foregroundStyle(color)
             Text(title).font(.caption2).foregroundStyle(.secondary)
         }
     }
 
-    private func formatTime(_ ms: Int) -> String {
+    private func formatTime(_ ms: UInt32) -> String {
         let seconds = ms / 1000
         if seconds < 60 { return "\(seconds)s" }
         let minutes = seconds / 60

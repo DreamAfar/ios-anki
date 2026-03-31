@@ -1,7 +1,11 @@
-<h1 align="center">Anki iOS</h1>
+<h1 align="center">Amgi</h1>
 
 <p align="center">
-  An open-source, offline-first iOS Anki client with full AnkiWeb sync.
+  <em>암기 (amgi) — Korean for "memorization"</em>
+</p>
+
+<p align="center">
+  An open-source, offline-first Anki-compatible iOS flashcard client with sync server support.
 </p>
 
 <p align="center">
@@ -13,13 +17,13 @@
 
 ---
 
-Anki iOS wraps the official [ankitects/anki](https://github.com/ankitects/anki) Rust backend via C FFI, giving you a native SwiftUI experience backed by the same battle-tested engine that powers Anki Desktop and AnkiDroid. Sync your decks with AnkiWeb, study with FSRS scheduling, and keep your review history in perfect sync across all your devices.
+Amgi wraps the official [ankitects/anki](https://github.com/ankitects/anki) Rust backend via C FFI, giving you a native SwiftUI experience backed by the same battle-tested engine that powers Anki Desktop and AnkiDroid. Sync your decks with any compatible sync server (including self-hosted), study with FSRS scheduling, and keep your review history in perfect sync across all your devices.
 
 ## Features
 
-- **Full AnkiWeb Sync** -- login, sync, full upload/download, bidirectional review sync
+- **Sync Server Support** -- login, sync, full upload/download, bidirectional review sync with any compatible server
 - **FSRS Scheduling** -- powered by the official Rust FSRS engine, not a reimplementation
-- **Card Rendering** -- Rust template engine renders cards exactly like desktop Anki
+- **Card Rendering** -- Rust template engine renders cards exactly like desktop clients
 - **Deck Browser** -- hierarchical deck tree with recursive `DisclosureGroup` expand/collapse, new/learn/review count badges on every node
 - **Study Session** -- answer cards with Again/Hard/Good/Easy; next-interval labels shown above each button
 - **Note Browser** -- search notes across all decks, deck filter chips (top-level decks auto-include subdecks), lazy-load results (50 per page)

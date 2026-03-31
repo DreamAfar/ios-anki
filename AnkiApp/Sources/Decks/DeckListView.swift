@@ -16,7 +16,7 @@ struct DeckListView: View {
                 ContentUnavailableView(
                     "No Decks",
                     systemImage: "rectangle.stack",
-                    description: Text("Sync with AnkiWeb to get your decks.")
+                    description: Text("Sync with your server to get your decks.")
                 )
             } else {
                 List {

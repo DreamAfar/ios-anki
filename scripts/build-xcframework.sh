@@ -8,8 +8,10 @@ OUTPUT_DIR="$ROOT_DIR/AnkiRust.xcframework"
 HEADER_DIR="$BRIDGE_DIR/include"
 
 export PROTOC="${PROTOC:-$(which protoc 2>/dev/null || echo /opt/homebrew/bin/protoc)}"
+export IPHONEOS_DEPLOYMENT_TARGET="17.0"
 
 echo "==> Using protoc: $PROTOC"
+echo "==> Deployment target: iOS $IPHONEOS_DEPLOYMENT_TARGET"
 echo "==> Building for iOS device (aarch64-apple-ios)..."
 cargo build \
     --manifest-path "$BRIDGE_DIR/Cargo.toml" \

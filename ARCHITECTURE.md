@@ -1,6 +1,6 @@
 # Architecture
 
-This document describes how Anki iOS is structured, how the Rust bridge works, and how data flows through the app.
+This document describes how Amgi is structured, how the Rust bridge works, and how data flows through the app.
 
 ## High-Level Overview
 
@@ -21,12 +21,12 @@ This document describes how Anki iOS is structured, how the Rust bridge works, a
 ├─────────────────────────────────────────────────┤
 │         Rust static library (.a)                 │
 │        ankitects/anki rslib crate                │
-│  SQLite · AnkiWeb sync · FSRS · Templates        │
+│  SQLite · Sync protocol · FSRS · Templates        │
 └─────────────────────────────────────────────────┘
 ```
 
 **Swift owns**: UI, navigation, dependency wiring, charts.
-**Rust owns**: SQLite database, AnkiWeb sync protocol, FSRS scheduling, card template rendering, statistics.
+**Rust owns**: SQLite database, sync protocol, FSRS scheduling, card template rendering, statistics.
 
 ## Module Map
 

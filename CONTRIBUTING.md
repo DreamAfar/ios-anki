@@ -1,4 +1,4 @@
-# Contributing to Anki iOS
+# Contributing to Amgi
 
 Thank you for your interest in contributing. This guide covers how to report issues, suggest features, and submit code changes.
 

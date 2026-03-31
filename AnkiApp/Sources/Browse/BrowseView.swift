@@ -17,6 +17,7 @@ struct BrowseView: View {
     @State private var activeDeck: DeckInfo?
     @State private var isLoading = false
     @State private var hasMorePages = true
+    @State private var showAddNote = false
 
     private let pageSize = 50
 
@@ -70,12 +71,24 @@ struct BrowseView: View {
         .navigationTitle("Browse")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    showAddNote = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
             ToolbarItem(placement: .topBarTrailing) {
                 if !notes.isEmpty {
                     Text("\(allNotes.count) notes")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
+            }
+        }
+        .sheet(isPresented: $showAddNote) {
+            AddNoteView {
+                Task { await performSearch() }
             }
         }
         .safeAreaInset(edge: .top) {
